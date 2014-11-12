@@ -311,7 +311,7 @@ $('button.parse').click(function() {
                 reader.readAsText(file);
                  vText += reader.result;
             } else {
-                fileDisplayArea.textContent = "File not supported!";
+                fileDisplayArea.textContent = "File not allowed!";
             }
         }
         fileDisplayArea.textContent = vText;
