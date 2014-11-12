@@ -311,7 +311,7 @@ $('button.parse').click(function() {
                 reader.readAsText(file);
                  vText += reader.result;
             } else {
-                fileDisplayArea.textContent = "File not allowed!2";
+                fileDisplayArea.textContent = "File not allowed!3";
             }
         }
         fileDisplayArea.textContent = vText;
