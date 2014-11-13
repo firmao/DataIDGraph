@@ -297,24 +297,24 @@ $('button.parse').click(function() {
     $('svg').html('');
     $('svg').append(style).append(defs);
      
-    var fileDisplayArea = document.getElementById('fileDisplayArea');
-    var fileInput = document.getElementById('fileInput');
-    var file = fileInput.files[0];
-    var vText = "";
-    fileDisplayArea.textContent = "";
-    for (var i = 0; i < fileInput.files.length; i++) {
-            var file = fileInput.files[i];
-            //var textType = /text.*/;
-
-            if (file != null) {
-                var reader = new FileReader();
-                reader.readAsText(file);
-                 vText += reader.result;
-            } else {
-                fileDisplayArea.textContent = "File not allowed!3";
-            }
-        }
-        fileDisplayArea.textContent = vText;
+//    var fileDisplayArea = document.getElementById('fileDisplayArea');
+//    var fileInput = document.getElementById('fileInput');
+//    var file = fileInput.files[0];
+//    var vText = "";
+//    fileDisplayArea.textContent = "";
+//    for (var i = 0; i < fileInput.files.length; i++) {
+//            var file = fileInput.files[i];
+//            //var textType = /text.*/;
+//
+//            if (file != null) {
+//                var reader = new FileReader();
+//                reader.readAsText(file);
+//                 vText += reader.result;
+//            } else {
+//                fileDisplayArea.textContent = "File not allowed!3";
+//            }
+//        }
+//        fileDisplayArea.textContent = vText;
         parseTextarea();
     
 });
@@ -439,3 +439,27 @@ function positionCircle(circle) {
 
 }
 
+window.onload = function () {
+    var fileInput = document.getElementById('fileInput');
+    var fileDisplayArea = document.getElementById('fileDisplayArea');
+
+    fileInput.addEventListener('change', function (e) {
+        for (var i = 0; i < fileInput.files.length; i++) {
+            var file = fileInput.files[i];
+            //var textType = /text.*/;
+
+            if (file != null) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    //fileDisplayArea.innerText = reader.result;
+                    fileDisplayArea.textContent = reader.result;
+                }
+
+                reader.readAsText(file);
+            } else {
+                fileDisplayArea.textContent = "File not supported2!";
+            }
+        }
+    });
+}
